@@ -22,8 +22,12 @@ Namespace Entities
         Public Property Description() As String
         <JsonProperty("start_date")>
         Public Property StartDate() As DateTime
+        <JsonProperty("due_date")>
+        Public Property DueDate() As DateTime
         <JsonProperty("done_rate")>
         Public Property DoneRate() As Integer
+        <JsonProperty("estimated_hours")>
+        Public Property EstimatedHours() As Double
         <JsonProperty("created_on")>
         Public Property CreatedOn() As DateTime
         <JsonProperty("updated_on")>
