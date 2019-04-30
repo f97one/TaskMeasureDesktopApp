@@ -23,6 +23,9 @@ Partial Class TaskListForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -85,17 +88,39 @@ Partial Class TaskListForm
         '
         Me.TicketsGrid.AllowUserToAddRows = False
         Me.TicketsGrid.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TicketsGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.TicketsGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TicketsGrid.AutoGenerateColumns = False
-        Me.TicketsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.TicketsGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.TicketsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.TicketsGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.SubjectDataGridViewTextBoxColumn})
         Me.TicketsGrid.DataSource = Me.RedmineIssueBindingSource
         Me.TicketsGrid.Location = New System.Drawing.Point(17, 75)
+        Me.TicketsGrid.MultiSelect = False
         Me.TicketsGrid.Name = "TicketsGrid"
         Me.TicketsGrid.ReadOnly = True
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.TicketsGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.TicketsGrid.RowHeadersVisible = False
         Me.TicketsGrid.RowTemplate.Height = 21
+        Me.TicketsGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TicketsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.TicketsGrid.Size = New System.Drawing.Size(502, 222)
         Me.TicketsGrid.TabIndex = 3
         '
@@ -106,10 +131,11 @@ Partial Class TaskListForm
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.IdDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.IdDataGridViewTextBoxColumn.HeaderText = "チケットID"
+        Me.IdDataGridViewTextBoxColumn.MinimumWidth = 75
         Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
         Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         Me.IdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.IdDataGridViewTextBoxColumn.Width = 74
+        Me.IdDataGridViewTextBoxColumn.Width = 75
         '
         'SubjectDataGridViewTextBoxColumn
         '
@@ -118,9 +144,11 @@ Partial Class TaskListForm
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SubjectDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
         Me.SubjectDataGridViewTextBoxColumn.HeaderText = "題名"
+        Me.SubjectDataGridViewTextBoxColumn.MinimumWidth = 400
         Me.SubjectDataGridViewTextBoxColumn.Name = "SubjectDataGridViewTextBoxColumn"
         Me.SubjectDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SubjectDataGridViewTextBoxColumn.Width = 5
+        Me.SubjectDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SubjectDataGridViewTextBoxColumn.Width = 400
         '
         'RedmineIssueBindingSource
         '
@@ -206,8 +234,6 @@ Partial Class TaskListForm
     Friend WithEvents TicketsGrid As DataGridView
     Friend WithEvents RedmineIssueBindingSource As BindingSource
     Friend WithEvents IssuesEntityBindingSource As BindingSource
-    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents SubjectDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ファイルFToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingToolStripMenuItem As ToolStripMenuItem
@@ -217,4 +243,6 @@ Partial Class TaskListForm
     Friend WithEvents ProjectsEntityBindingSource As BindingSource
     Friend WithEvents RedmineProjectBindingSource As BindingSource
     Friend WithEvents ProjectsComboBox As ComboBox
+    Friend WithEvents IdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SubjectDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
