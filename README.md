@@ -1,0 +1,2 @@
+# TaskMeasureDesktopApp
+Redmine REST APIをつかったタスク時間計測用デスクトップアプリ
