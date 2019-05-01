@@ -43,6 +43,7 @@ Public Class IssueMeasureForm
         ElapsedTimer1.Start()
         Paused = False
 
+        PauseButton.Enabled = True
         StartStopButton.Text = "Stop"
     End Sub
 
@@ -51,6 +52,7 @@ Public Class IssueMeasureForm
         ElapsedTimer1.Stop()
         Paused = True
 
+        PauseButton.Enabled = False
         StartStopButton.Text = "Start"
     End Sub
 
