@@ -123,6 +123,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Repositories\ApiAccessException.vb" />
     <Compile Include="Repositories\RedmineRepository.vb" />
     <Compile Include="TaskListForm.Designer.vb">
       <DependentUpon>TaskListForm.vb</DependentUpon>
