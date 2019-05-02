@@ -2,9 +2,6 @@
 Imports TaskMeasure.Repositories
 
 Public Class TaskListForm
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles TicketsGrid.CellContentClick
-        ' TODO : 計測開始処理を書く
-    End Sub
 
     Private Sub SettingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingToolStripMenuItem.Click
         RaiseConfig()
@@ -29,9 +26,13 @@ Public Class TaskListForm
             RaiseConfig()
         End If
 
-        Dim repo As New RedmineRepository()
-        Dim projects As List(Of RedmineProject) = repo.GetProjects()
-        ProjectsComboBox.DataSource = projects
+        Try
+            Dim repo As New RedmineRepository()
+            Dim projects As List(Of RedmineProject) = repo.GetProjects()
+            ProjectsComboBox.DataSource = projects
+        Catch ex As ApiAccessException
+            MessageBox.Show("プロジェクト一覧を取得できませんでした。")
+        End Try
     End Sub
 
     Private Sub RaiseConfig()
@@ -42,9 +43,22 @@ Public Class TaskListForm
 
     Private Sub ProjectsComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ProjectsComboBox.SelectedIndexChanged
         Dim proj As RedmineProject = ProjectsComboBox.SelectedItem
-        Dim repo As New RedmineRepository()
-        Dim issues As List(Of RedmineIssue) = repo.GetIssues(proj)
 
-        TicketsGrid.DataSource = issues
+        Try
+            Dim repo As New RedmineRepository()
+            Dim issues As List(Of RedmineIssue) = repo.GetIssues(proj)
+
+            TicketsGrid.DataSource = issues
+        Catch ex As ApiAccessException
+            MessageBox.Show("チケット一覧を取得できませんでした。")
+        End Try
+    End Sub
+
+    Private Sub TicketsGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles TicketsGrid.CellDoubleClick
+        Dim row As RedmineIssue = TicketsGrid.CurrentRow.DataBoundItem
+        Me.Hide()
+        'Dim f As New IssueMeasureForm(row, True)
+        'f.Show()
+
     End Sub
 End Class
