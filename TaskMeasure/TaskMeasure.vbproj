@@ -102,12 +102,6 @@
     <Compile Include="Entities\TimeEntry.vb" />
     <Compile Include="Entities\Tracker.vb" />
     <Compile Include="EntryModule.vb" />
-    <Compile Include="IssueMeasureForm.Designer.vb">
-      <DependentUpon>IssueMeasureForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="IssueMeasureForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -135,9 +129,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IssueMeasureForm.resx">
-      <DependentUpon>IssueMeasureForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
