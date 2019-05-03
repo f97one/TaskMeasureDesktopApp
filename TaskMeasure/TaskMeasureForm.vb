@@ -114,6 +114,7 @@ Public Class TaskMeasureForm
     End Sub
 
     Private Sub StartCount()
+        TimeEntryComboBox.Enabled = False
         PauseBtn.Enabled = True
         CommentTextBox.Enabled = False
         StartStopButton.Text = "Stop"
@@ -128,6 +129,7 @@ Public Class TaskMeasureForm
         ElapsedTimer1.Stop()
         Paused = True
 
+        TimeEntryComboBox.Enabled = True
         PauseBtn.Enabled = False
         CommentTextBox.Enabled = True
         StartStopButton.Text = "Start"
