@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="446600A3-0802-4A85-ADB7-6DA25D3D90F2" Name="Task Measure for Redmine" Language="1041" Version="1.0.0" Manufacturer="HAJIME Fukuna (f97one)" UpgradeCode="AF559F85-D767-4DD0-A24D-8178AAC8E756" Codepage="932">
+    <Package Description="Task Measure for Redmine" Comments="Task Measure for Redmine" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" />
+    <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+        <Directory Id="TASKMEASURE" Name="TaskMeasure">
+          <Component Id="APP.CONFIG" DiskId="1" Guid="8E2E2CD2-11DC-4359-AA45-ACCFFD77703F">
+            <File Id="APP.CONFIG" Name="App.config" Source="C:\work\WiX\TaskMeasure\App.config" />
+          </Component>
+          <Component Id="NEWTONSOFT.JSON.DLL" DiskId="1" Guid="4C451CEE-A21F-4629-8D2E-9EB8CEC63766">
+            <File Id="NEWTONSOFT.JSON.DLL" Name="Newtonsoft.Json.dll" Source="C:\work\WiX\TaskMeasure\Newtonsoft.Json.dll" />
+          </Component>
+          <Component Id="NEWTONSOFT.JSON.XML" DiskId="1" Guid="CE28E740-4D48-4AE9-B1D1-36AD27013DB1">
+            <File Id="NEWTONSOFT.JSON.XML" Name="Newtonsoft.Json.xml" Source="C:\work\WiX\TaskMeasure\Newtonsoft.Json.xml" />
+          </Component>
+          <Component Id="RESTSHARP.DLL" DiskId="1" Guid="98E99DBF-BB44-4786-8DCC-11540D425B99">
+            <File Id="RESTSHARP.DLL" Name="RestSharp.dll" Source="C:\work\WiX\TaskMeasure\RestSharp.dll" />
+          </Component>
+          <Component Id="RESTSHARP.XML" DiskId="1" Guid="A9552392-7DCD-43FD-8274-C35845041587">
+            <File Id="RESTSHARP.XML" Name="RestSharp.xml" Source="C:\work\WiX\TaskMeasure\RestSharp.xml" />
+          </Component>
+          <Component Id="TASKMEASURE.EXE" DiskId="1" Guid="FD7E053D-794B-4BC6-ABAC-2F4E12870B88">
+            <File Id="TASKMEASURE.EXE" Name="TaskMeasure.exe" Source="C:\work\WiX\TaskMeasure\TaskMeasure.exe">
+              <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="Task Measure for Redmine" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="DesktopIcon.exe" IconIndex="0" />
+              <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Task Measure for Redmine" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+            </File>
+          </Component>
+          <Component Id="TASKMEASURE.EXE.CONFIG" DiskId="1" Guid="0D52FD49-DDDA-4AE0-9473-EF094BE8D06D">
+            <File Id="TASKMEASURE.EXE.CONFIG" Name="TaskMeasure.exe.config" Source="C:\work\WiX\TaskMeasure\TaskMeasure.exe.config" />
+          </Component>
+          <Component Id="TASKMEASURE.PDB" DiskId="1" Guid="08F331A9-EDEC-479A-BB93-68FDB526F5C3">
+            <File Id="TASKMEASURE.PDB" Name="TaskMeasure.pdb" Source="C:\work\WiX\TaskMeasure\TaskMeasure.pdb" />
+          </Component>
+          <Component Id="TASKMEASURE.XML" DiskId="1" Guid="A11E901D-9408-4182-9B37-E032937B1B39">
+            <File Id="TASKMEASURE.XML" Name="TaskMeasure.xml" Source="C:\work\WiX\TaskMeasure\TaskMeasure.xml" />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" />
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuDir" Name="Task Measure for Redmine">
+          <Component Id="StartMenuShortcuts" Guid="BF5030C5-B624-4B5E-ACDD-8DE52DD6DE36">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
+            <Shortcut Id="UninstallProduct" Name="Uninstall" Description="Uninstalls Task Measure for Redmine" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+      <ComponentRef Id="APP.CONFIG" />
+      <ComponentRef Id="NEWTONSOFT.JSON.DLL" />
+      <ComponentRef Id="NEWTONSOFT.JSON.XML" />
+      <ComponentRef Id="RESTSHARP.DLL" />
+      <ComponentRef Id="RESTSHARP.XML" />
+      <ComponentRef Id="TASKMEASURE.EXE" />
+      <ComponentRef Id="TASKMEASURE.EXE.CONFIG" />
+      <ComponentRef Id="TASKMEASURE.PDB" />
+      <ComponentRef Id="TASKMEASURE.XML" />
+      <ComponentRef Id="StartMenuShortcuts" />
+    </Feature>
+    <UI />
+    <UIRef Id="WixUI_InstallDir" />
+    <Icon Id="DesktopIcon.exe" SourceFile="C:\work\WiX\TaskMeasure\TaskMeasure.exe" />
+    <Icon Id="StartMenuIcon.exe" SourceFile="C:\work\WiX\TaskMeasure\TaskMeasure.exe" />
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <Property Id="WIXUI_INSTALLDIR" Value="TASKMEASURE" />
+  </Product>
+</Wix>
