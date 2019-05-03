@@ -157,7 +157,19 @@ Public Class TaskMeasureForm
     End Sub
 
     Private Sub TaskMeasureForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        PreForm.Show()
+        If ElapsedTimer1.Enabled Then
+            Dim msg As String = "時間計測中です。" + Environment.NewLine + "計測を中止しますか？(時間登録はされません)"
+            Dim result As DialogResult = MessageBox.Show(msg, "中止確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                StopCount()
+                PreForm.Show()
+            Else
+                ' 中止しないので以後のイベントをキャンセル
+                e.Cancel = True
+            End If
+        Else
+            PreForm.Show()
+        End If
     End Sub
 
     Private Sub TaskMeasureForm_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
