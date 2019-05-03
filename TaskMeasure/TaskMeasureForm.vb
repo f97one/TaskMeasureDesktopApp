@@ -57,6 +57,11 @@ Public Class TaskMeasureForm
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             e.Handled = True
+
+            If My.Settings.ImmediateMesureOnPressEnter AndAlso Not ElapsedTimer1.Enabled Then
+                StartStopButton.PerformClick()
+            End If
+
         End If
     End Sub
 
