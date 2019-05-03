@@ -57,8 +57,10 @@ Public Class TaskListForm
     Private Sub TicketsGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles TicketsGrid.CellDoubleClick
         Dim row As RedmineIssue = TicketsGrid.CurrentRow.DataBoundItem
         Me.Hide()
-        'Dim f As New IssueMeasureForm(row, True)
-        'f.Show()
+        Dim f As New TaskMeasureForm(row)
+        f.PreForm = Me
+        f.Show()
+
 
     End Sub
 End Class
