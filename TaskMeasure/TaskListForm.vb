@@ -15,31 +15,39 @@ Public Class TaskListForm
         Dim redmineUrl = My.Settings.RedmineUrl
         Dim apikey = My.Settings.UserApiKey
 
+        Dim canceled = False
+
         If (String.IsNullOrWhiteSpace(redmineUrl)) Then
             MessageBox.Show("Redmine URL を設定してください。")
-            RaiseConfig()
+            canceled = RaiseConfig()
         ElseIf String.IsNullOrWhiteSpace(apikey) Then
             MessageBox.Show("ユーザーの API アクセスキーを設定してください。")
-            RaiseConfig()
+            canceled = RaiseConfig()
         ElseIf Not (redmineUrl.StartsWith("http://")) And Not (redmineUrl.StartsWith("https://")) Then
             MessageBox.Show("Redmine URL を設定してください。")
-            RaiseConfig()
+            canceled = RaiseConfig()
         End If
 
-        Try
-            Dim repo As New RedmineRepository()
-            Dim projects As List(Of RedmineProject) = repo.GetProjects()
-            ProjectsComboBox.DataSource = projects
-        Catch ex As ApiAccessException
-            MessageBox.Show("プロジェクト一覧を取得できませんでした。")
-        End Try
+        If canceled Then
+            Close()
+        Else
+            Try
+                Dim repo As New RedmineRepository()
+                Dim projects As List(Of RedmineProject) = repo.GetProjects()
+                ProjectsComboBox.DataSource = projects
+            Catch ex As ApiAccessException
+                MessageBox.Show("プロジェクト一覧を取得できませんでした。")
+            End Try
+        End If
     End Sub
 
-    Private Sub RaiseConfig()
+    Private Function RaiseConfig() As Boolean
         Dim f As New ConfigForm()
         f.ShowDialog(Me)
+        Dim r = f.Canceled
         f.Dispose()
-    End Sub
+        Return r
+    End Function
 
     Private Sub ProjectsComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ProjectsComboBox.SelectedIndexChanged
         Dim proj As RedmineProject = ProjectsComboBox.SelectedItem
@@ -60,7 +68,5 @@ Public Class TaskListForm
         Dim f As New TaskMeasureForm(row)
         f.PreForm = Me
         f.Show()
-
-
     End Sub
 End Class
