@@ -22,6 +22,7 @@ Partial Class ConfigForm
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.UrlTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -30,7 +31,9 @@ Partial Class ConfigForm
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ImmediateMesureCheckBox = New System.Windows.Forms.CheckBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -47,7 +50,7 @@ Partial Class ConfigForm
         Me.UrlTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.UrlTextBox.Location = New System.Drawing.Point(94, 10)
         Me.UrlTextBox.Name = "UrlTextBox"
-        Me.UrlTextBox.Size = New System.Drawing.Size(379, 19)
+        Me.UrlTextBox.Size = New System.Drawing.Size(353, 19)
         Me.UrlTextBox.TabIndex = 1
         '
         'Label2
@@ -64,7 +67,7 @@ Partial Class ConfigForm
         Me.ApiKeyTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.ApiKeyTextBox.Location = New System.Drawing.Point(94, 36)
         Me.ApiKeyTextBox.Name = "ApiKeyTextBox"
-        Me.ApiKeyTextBox.Size = New System.Drawing.Size(379, 19)
+        Me.ApiKeyTextBox.Size = New System.Drawing.Size(353, 19)
         Me.ApiKeyTextBox.TabIndex = 3
         '
         'SubmitBtn
@@ -102,6 +105,10 @@ Partial Class ConfigForm
         Me.ImmediateMesureCheckBox.Text = "計測コメント入力のEnter押下で計測を開始する"
         Me.ImmediateMesureCheckBox.UseVisualStyleBackColor = True
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'ConfigForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -119,6 +126,7 @@ Partial Class ConfigForm
         Me.Text = "Config"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -132,4 +140,5 @@ Partial Class ConfigForm
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents ImmediateMesureCheckBox As CheckBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

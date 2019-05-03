@@ -1,14 +1,21 @@
 ﻿Public Class ConfigForm
+
+    Public Property Canceled() As Boolean = False
+
     Private Sub UrlTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles UrlTextBox.Validating
-        If Not (UrlTextBox.Text.StartsWith("https://")) And Not (UrlTextBox.Text.StartsWith("http://")) Then
-            ToolStripStatusLabel1.Text = "URLがhttp://, またはhttp://で始まっていません"
+        If Not (UrlTextBox.Text.StartsWith("https://")) And Not (UrlTextBox.Text.StartsWith("http://")) AndAlso ActiveControl IsNot UrlTextBox Then
+            Dim errMsg = "URLがhttp://, またはhttp://で始まっていません"
+            ErrorProvider1.SetError(UrlTextBox, errMsg)
+            ToolStripStatusLabel1.Text = errMsg
             e.Cancel = True
         End If
     End Sub
 
     Private Sub ApiKeyTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ApiKeyTextBox.Validating
-        If String.IsNullOrWhiteSpace(ApiKeyTextBox.Text) Then
-            ToolStripStatusLabel1.Text = "API Keyは必須です"
+        If String.IsNullOrWhiteSpace(ApiKeyTextBox.Text) AndAlso ActiveControl IsNot ApiKeyTextBox Then
+            Dim errMsg = "API Keyは必須です"
+            ErrorProvider1.SetError(ApiKeyTextBox, errMsg)
+            ToolStripStatusLabel1.Text = errMsg
             e.Cancel = True
         End If
     End Sub
@@ -31,19 +38,22 @@
         Dim redmineUrl = My.Settings.RedmineUrl
         Dim apikey = My.Settings.UserApiKey
 
-        If (String.IsNullOrWhiteSpace(redmineUrl)) Then
-            MessageBox.Show("Redmine URL を設定してください。")
-            ToolStripStatusLabel1.Text = "Redmine URL は必須です"
-            e.Cancel = True
-        ElseIf String.IsNullOrWhiteSpace(apikey) Then
-            MessageBox.Show("ユーザーの API アクセスキーを設定してください。")
-            ToolStripStatusLabel1.Text = "API Keyは必須です"
-            e.Cancel = True
-        ElseIf Not (redmineUrl.StartsWith("http://")) And Not (redmineUrl.StartsWith("https://")) Then
-            MessageBox.Show("Redmine URL を設定してください。")
-            ToolStripStatusLabel1.Text = "URLがhttp://, またはhttp://で始まっていません"
-            e.Cancel = True
+        If String.IsNullOrWhiteSpace(redmineUrl) OrElse String.IsNullOrWhiteSpace(apikey) Then
+            Dim result As DialogResult = MessageBox.Show("設定が完了していませんが終了しますか？", "終了確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                Canceled = True
+            Else
+                e.Cancel = True
+            End If
         End If
 
+    End Sub
+
+    Private Sub UrlTextBox_Validated(sender As Object, e As EventArgs) Handles UrlTextBox.Validated
+        ErrorProvider1.SetError(UrlTextBox, "")
+    End Sub
+
+    Private Sub ApiKeyTextBox_Validated(sender As Object, e As EventArgs) Handles ApiKeyTextBox.Validated
+        ErrorProvider1.SetError(ApiKeyTextBox, "")
     End Sub
 End Class
