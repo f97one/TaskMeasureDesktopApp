@@ -29,6 +29,7 @@ Partial Class ConfigForm
         Me.SubmitBtn = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ImmediateMesureCheckBox = New System.Windows.Forms.CheckBox()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -69,7 +70,7 @@ Partial Class ConfigForm
         'SubmitBtn
         '
         Me.SubmitBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SubmitBtn.Location = New System.Drawing.Point(398, 87)
+        Me.SubmitBtn.Location = New System.Drawing.Point(398, 91)
         Me.SubmitBtn.Name = "SubmitBtn"
         Me.SubmitBtn.Size = New System.Drawing.Size(75, 23)
         Me.SubmitBtn.TabIndex = 4
@@ -79,7 +80,7 @@ Partial Class ConfigForm
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 113)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 117)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(486, 22)
         Me.StatusStrip1.TabIndex = 5
@@ -90,11 +91,23 @@ Partial Class ConfigForm
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
         '
+        'ImmediateMesureCheckBox
+        '
+        Me.ImmediateMesureCheckBox.AutoSize = True
+        Me.ImmediateMesureCheckBox.Location = New System.Drawing.Point(12, 63)
+        Me.ImmediateMesureCheckBox.Margin = New System.Windows.Forms.Padding(3, 12, 3, 3)
+        Me.ImmediateMesureCheckBox.Name = "ImmediateMesureCheckBox"
+        Me.ImmediateMesureCheckBox.Size = New System.Drawing.Size(252, 16)
+        Me.ImmediateMesureCheckBox.TabIndex = 6
+        Me.ImmediateMesureCheckBox.Text = "計測コメント入力のEnter押下で計測を開始する"
+        Me.ImmediateMesureCheckBox.UseVisualStyleBackColor = True
+        '
         'ConfigForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(486, 135)
+        Me.ClientSize = New System.Drawing.Size(486, 139)
+        Me.Controls.Add(Me.ImmediateMesureCheckBox)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.SubmitBtn)
         Me.Controls.Add(Me.ApiKeyTextBox)
@@ -118,4 +131,5 @@ Partial Class ConfigForm
     Friend WithEvents SubmitBtn As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents ImmediateMesureCheckBox As CheckBox
 End Class

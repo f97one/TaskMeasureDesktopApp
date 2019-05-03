@@ -16,11 +16,13 @@
     Private Sub ConfigForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         UrlTextBox.Text = My.Settings.RedmineUrl
         ApiKeyTextBox.Text = My.Settings.UserApiKey
+        ImmediateMesureCheckBox.Checked = My.Settings.ImmediateMesureOnPressEnter
     End Sub
 
     Private Sub SubmitBtn_Click(sender As Object, e As EventArgs) Handles SubmitBtn.Click
         My.Settings.RedmineUrl = UrlTextBox.Text
         My.Settings.UserApiKey = ApiKeyTextBox.Text
+        My.Settings.ImmediateMesureOnPressEnter = ImmediateMesureCheckBox.Checked
         My.Settings.Save()
         Close()
     End Sub
