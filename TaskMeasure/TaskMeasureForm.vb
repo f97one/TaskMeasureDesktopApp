@@ -79,6 +79,9 @@ Public Class TaskMeasureForm
         TicketNameLabel.Text = CurrentIssue.Subject
         EstimatedHoursLabel.Text = BuildTimeLabel(CurrentIssue.EstimatedHours)
         ElapsedHoursLabel.Text = BuildTimeLabel(0.0D)
+
+        Dim tip As String = IIf(My.Settings.ImmediateMesureOnPressEnter, "Enterキーを押すと即座に計測を始めます。", "計測を始めるには「Start」ボタンを押します。")
+        CommentsToolTip1.SetToolTip(CommentTextBox, tip)
     End Sub
 
     Private Sub StartStopButton_Click(sender As Object, e As EventArgs) Handles StartStopButton.Click

@@ -37,6 +37,7 @@ Partial Class TaskMeasureForm
         Me.TicketNameLabel = New System.Windows.Forms.Label()
         Me.CommentTextBox = New System.Windows.Forms.TextBox()
         Me.ElapsedTimer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.CommentsToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.TimeEntryActivityBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -214,4 +215,5 @@ Partial Class TaskMeasureForm
     Friend WithEvents TicketNameLabel As Label
     Friend WithEvents CommentTextBox As TextBox
     Friend WithEvents ElapsedTimer1 As Timer
+    Friend WithEvents CommentsToolTip1 As ToolTip
 End Class
