@@ -342,3 +342,4 @@ healthchecksdb
 # WiX Toolset
 *.msi
 *.wixpdb
+*.wixobj
