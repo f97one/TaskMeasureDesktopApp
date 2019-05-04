@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="446600A3-0802-4A85-ADB7-6DA25D3D90F2" Name="Task Measure for Redmine" Language="1041" Version="1.0.0" Manufacturer="HAJIME Fukuna (f97one)" UpgradeCode="AF559F85-D767-4DD0-A24D-8178AAC8E756" Codepage="932">
+  <Product Id="446600A3-0802-4A85-ADB7-6DA25D3D90F2" Name="Task Measure for Redmine" Language="1041" Version="1.0.1" Manufacturer="HAJIME Fukuna (f97one)" UpgradeCode="AF559F85-D767-4DD0-A24D-8178AAC8E756" Codepage="932">
     <Package Description="Task Measure for Redmine" Comments="Task Measure for Redmine" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" />
     <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
     <Directory Id="TARGETDIR" Name="SourceDir">
