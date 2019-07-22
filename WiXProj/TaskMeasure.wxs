@@ -36,6 +36,12 @@
           <Component Id="TASKMEASURE.XML" DiskId="1" Guid="A11E901D-9408-4182-9B37-E032937B1B39">
             <File Id="TASKMEASURE.XML" Name="TaskMeasure.xml" Source="C:\work\WiX\TaskMeasure\TaskMeasure.xml" />
           </Component>
+          <Component Id="TASKMEASURE.EXE.MANIFEST" DiskId="1" KeyPath="yes" Guid="f9e344a4-74fc-4424-bb48-5d39f81124e4">
+            <File Id="TASKMEASURE.EXE.MANIFEST" Name="TaskMeasure.exe.manifest" Source="C:\work\WiX\TaskMeasure\TaskMeasure.exe.manifest" />
+          </Component>
+          <Component Id="TASKMEASURE.APPLICATION" DiskId="1" KeyPath="yes" Guid="70855f2a-42c0-4cc2-a9a7-d76f9a9e662a">
+            <File Id="TASKMEASURE.APPLICATION" Name="TaskMeasure.application" Source="C:\work\WiX\TaskMeasure\TaskMeasure.application" />
+          </Component>
         </Directory>
       </Directory>
       <Directory Id="DesktopFolder" />
@@ -60,6 +66,8 @@
       <ComponentRef Id="TASKMEASURE.PDB" />
       <ComponentRef Id="TASKMEASURE.XML" />
       <ComponentRef Id="StartMenuShortcuts" />
+      <ComponentRef Id="TASKMEASURE.EXE.MANIFEST" />
+      <ComponentRef Id="TASKMEASURE.APPLICATION" />
     </Feature>
     <UI />
     <UIRef Id="WixUI_InstallDir" />
