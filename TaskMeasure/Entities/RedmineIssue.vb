@@ -23,11 +23,11 @@ Namespace Entities
         <JsonProperty("start_date")>
         Public Property StartDate() As DateTime
         <JsonProperty("due_date")>
-        Public Property DueDate() As DateTime
+        Public Property DueDate() As Nullable(Of DateTime)
         <JsonProperty("done_rate")>
         Public Property DoneRate() As Integer
         <JsonProperty("estimated_hours")>
-        Public Property EstimatedHours() As Double
+        Public Property EstimatedHours() As Nullable(Of Double)
         <JsonProperty("created_on")>
         Public Property CreatedOn() As DateTime
         <JsonProperty("updated_on")>

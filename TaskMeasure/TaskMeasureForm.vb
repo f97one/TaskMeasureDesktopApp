@@ -33,10 +33,14 @@ Public Class TaskMeasureForm
         Return String.Format("{0} H ({1}時間{2}分)", tm, Math.Floor(timeSpan.TotalHours), timeSpan.Minutes)
     End Function
 
-    Private Function BuildTimeLabel(t As Double) As String
+    Private Function BuildTimeLabel(t As Nullable(Of Double)) As String
+        If t Is Nothing Then
+            Return "--"
+        End If
+
         Dim ts As TimeSpan = TimeSpan.FromHours(t)
 
-        Dim tm As Double = Math.Round(t, 2, MidpointRounding.AwayFromZero)
+        Dim tm As Double = Math.Round(CType(t, Double), 2, MidpointRounding.AwayFromZero)
         Return String.Format("{0} H ({1}時間{2}分)", tm, Math.Floor(ts.TotalHours), ts.Minutes)
     End Function
 
