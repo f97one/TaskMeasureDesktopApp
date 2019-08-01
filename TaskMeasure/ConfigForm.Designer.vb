@@ -23,6 +23,7 @@ Partial Class ConfigForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConfigForm))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.UrlTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -121,6 +122,7 @@ Partial Class ConfigForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.UrlTextBox)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "ConfigForm"
         Me.Text = "Config"

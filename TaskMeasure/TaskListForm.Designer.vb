@@ -28,6 +28,7 @@ Partial Class TaskListForm
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TaskListForm))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.RedmineProjectBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProjectsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -213,6 +214,7 @@ Partial Class TaskListForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "TaskListForm"
         Me.Text = "TaskListForm"
